@@ -12,13 +12,26 @@
     <div class="stage"> 
     </div>
     <script>
+    var scriptRun = false;
+    if (localStorage.savedScript){
+        var script = localStorage.savedScript;
+        delete localStorage.savedScript;
+        scriptRun = true;
+        eval(script);
+    }
     window.addEventListener('message', receiveMessage, false);
     function receiveMessage(evt){
-        console.log('message received: %s', evt);
-        eval(evt.data);
+        if (scriptRun){
+            localStorage.savedScript = evt.data;
+            location.reload();
+	}else{
+            scriptRun = true;
+            eval(evt.data);
+        }
     }
     </script>
-    <script src="timer.js"></script>
-    <script src="runtime.js"></script>
+    <script src="lib/jquery-1.7.2.min.js"></script>
+    <script src="scripts/timer.js"></script>
+    <script src="scripts/runtime.js"></script>
 </body>
 </html>
