@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>iFrame Canvas</title>
+    <style>
+    html,body,.stage{ height: 100%;}
+    </style>
+</head>
+
+<body id="home">
+    <div class="stage"> 
+    </div>
+    <script>
+    window.addEventListener('message', receiveMessage, false);
+    function receiveMessage(evt){
+        console.log('message received: %s', evt);
+        eval(evt.data);
+    }
+    </script>
+    <script src="timer.js"></script>
+    <script src="runtime.js"></script>
+</body>
+</html>
