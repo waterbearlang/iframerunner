@@ -25,10 +25,11 @@
     }
     window.addEventListener('message', receiveMessage, false);
     function receiveMessage(evt){
-		switch(evt.data.command){
+		var message = JSON.parse(evt.data);
+		switch(message.command){
 			case 'runscript': return runScript(evt.data.script);
 			case 'reset': return reset();
-			default: return console.log('unknown command: %s', evt.data);
+			default: return console.log('unknown command: %o', message);
 		}
 	}
 	
