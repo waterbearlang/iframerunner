@@ -32,6 +32,11 @@
 		}
 	}
 	
+	function reset(){
+		delete localStorage.savedScript;
+		location.reload();
+	}
+	
 	function runScript(script){
         if (scriptRun){
             localStorage.savedScript = script;
