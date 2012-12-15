@@ -25,9 +25,9 @@
     }
     window.addEventListener('message', receiveMessage, false);
     function receiveMessage(evt){
-		console.log('evt.data: %o', evt.data);
 		try{
 			var message = JSON.parse(evt.data);
+			console.log('message: %o', message);
 		}catch(e){
 			console.log('problem parsing %s', evt.data);
 			return;
