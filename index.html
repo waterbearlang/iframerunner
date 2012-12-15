@@ -25,7 +25,12 @@
     }
     window.addEventListener('message', receiveMessage, false);
     function receiveMessage(evt){
-		var message = JSON.parse(evt.data);
+		try{
+			var message = JSON.parse(evt.data);
+		}catch(e){
+			console.log('problem parsing %s', evt.data);
+			return;
+		}
 		switch(message.command){
 			case 'runscript': return runScript(evt.data.script);
 			case 'reset': return reset();
