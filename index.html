@@ -25,12 +25,20 @@
     }
     window.addEventListener('message', receiveMessage, false);
     function receiveMessage(evt){
+		switch(evt.data.command){
+			case 'runscript': return runScript(evt.data.script);
+			case 'reset': return reset();
+			default: return console.log('unknown command: %s', evt.data.command);
+		}
+	}
+	
+	function runScript(script){
         if (scriptRun){
-            localStorage.savedScript = evt.data;
+            localStorage.savedScript = script;
             location.reload();
 	}else{
             scriptRun = true;
-            eval(evt.data);
+            eval(script);
         }
     }
     </script>
