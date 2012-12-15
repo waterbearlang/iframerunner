@@ -34,7 +34,7 @@ function j(obj){
 	}
 }
 
-function print(){
+function prints(){
 	if (debug){
 		console.log.apply(console, arguments);
 	}
@@ -116,14 +116,14 @@ twinapex.debug = {}
  */
 twinapex.debug.printException = function(exc) {
 	
-	function print(msg) {
+	function prints(msg) {
 		console.log(msg);
 	}
 	
-	print(exc);
+	prints(exc);
 	
 	if (!exc.stack) {
-		print('no stacktrace available');
+		prints('no stacktrace available');
 		return;
 	};
 	var lines = exc.stack.toString().split('\n');
@@ -143,10 +143,10 @@ twinapex.debug.printException = function(exc) {
 	toprint.reverse();
 	
 	for (var i = 0; i < toprint.length; i++) {
-		print('  ' + toprint[i][1]);
-		print('    ' + toprint[i][0]);
+		prints('  ' + toprint[i][1]);
+		prints('    ' + toprint[i][0]);
 	};
-	print();
+	prints();
 }
 
 
