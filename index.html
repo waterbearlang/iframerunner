@@ -33,18 +33,20 @@
 			return;
 		}
 		switch(message.command){
-			case 'runscript': return runScript(evt.data.script);
+			case 'runscript': return runScript(message.script);
 			case 'reset': return reset();
 			default: return console.log('unknown command: %o', message);
 		}
 	}
 	
 	function reset(){
+		console.log('reset');
 		delete localStorage.savedScript;
 		location.reload();
 	}
 	
 	function runScript(script){
+		console.log('runScript');
         if (scriptRun){
             localStorage.savedScript = script;
             location.reload();
