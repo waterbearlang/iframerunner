@@ -27,7 +27,6 @@
     function receiveMessage(evt){
 		try{
 			var message = JSON.parse(evt.data);
-			console.log('message: %o', message);
 		}catch(e){
 			console.log('problem parsing %s', evt.data);
 			return;
@@ -40,13 +39,11 @@
 	}
 	
 	function reset(){
-		console.log('reset');
 		delete localStorage.savedScript;
 		location.reload();
 	}
 	
 	function runScript(script){
-		console.log('runScript');
         if (scriptRun){
             localStorage.savedScript = script;
             location.reload();
