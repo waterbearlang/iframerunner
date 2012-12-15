@@ -28,7 +28,7 @@
 		switch(evt.data.command){
 			case 'runscript': return runScript(evt.data.script);
 			case 'reset': return reset();
-			default: return console.log('unknown command: %s', evt.data.command);
+			default: return console.log('unknown command: %s', evt.data);
 		}
 	}
 	
