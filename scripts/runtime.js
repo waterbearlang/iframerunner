@@ -54,7 +54,7 @@ Local.prototype.delete = function(type, name){
 function Global(){
     this.timer = new Timer();
     this.keys = {};
-    this.stage = document.getElementsByClassName('.stage')[0];
+    this.stage = document.getElementsByClassName('stage')[0];
     this.mouse_x = -1;
     this.mouse_y = -1;
     this.stage_width = this.stage.clientWidth;
