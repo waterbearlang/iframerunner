@@ -53,8 +53,6 @@ Local.prototype.delete = function(type, name){
 
 function Global(){
     this.timer = new Timer();
-    this.subscribeMouseEvents();
-    this.subscribeKeyboardEvents();
     this.keys = {};
     this.stage = document.getElementsByClassName('.stage')[0];
     this.mouse_x = -1;
@@ -64,6 +62,8 @@ function Global(){
     this.stage_center_x = this.stage_width / 2;
     this.stage_center_y = this.stage_height / 2;
     this.mouse_down = false;
+    this.subscribeMouseEvents();
+    this.subscribeKeyboardEvents();
 };
 
 Global.prototype.subscribeMouseEvents = function(){
