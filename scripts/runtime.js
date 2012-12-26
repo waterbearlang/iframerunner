@@ -75,7 +75,7 @@ Global.prototype.subscribeMouseEvents = function(){
 		self.mouse_x = evt.offsetX;
         self.mouse_y = evt.offsetY;
 	});
-    $(document.body).mouseup(function(evt){
+    document.body.addEventListener('mouseup', function(evt){
 		self.mouse_down = false;
 	});
 };
