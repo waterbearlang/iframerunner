@@ -91,7 +91,7 @@ Global.prototype.specialKeys = {
 	120: "f9", 121: "f10", 122: "f11", 123: "f12", 144: "numlock", 145: "scroll", 191: "/", 224: "meta"
 };
 	
-Global.prototype.shiftNums: {
+Global.prototype.shiftNums = {
 	// taken from jQuery Hotkeys Plugin
 	"`": "~", "1": "!", "2": "@", "3": "#", "4": "$", "5": "%", "6": "^", "7": "&", 
 	"8": "*", "9": "(", "0": ")", "-": "_", "=": "+", ";": ": ", "'": "\"", ",": "<", 
