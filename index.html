@@ -55,7 +55,7 @@
 	}
 	
 	function runScript(script){
-		console.log('run script &lt;script>%s&lt;/script>', script);
+		console.log('run script %s', wrap(script));
         if (scriptRun){
             localStorage.savedScript = script;
             location.reload();
