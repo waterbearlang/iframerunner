@@ -26,7 +26,7 @@
         var script = localStorage.savedScript;
         delete localStorage.savedScript;
         scriptRun = true;
-        eval(script);
+        eval(wrap(script));
     }
     window.addEventListener('message', receiveMessage, false);
 	
@@ -50,6 +50,10 @@
 		location.reload();
 	}
 	
+	function wrap(script){
+		return 'var global = new Global();(function(){var local = new Local(); try{local.canvas = document.createElement("canvas"); local.canvas.setAttribute("width", global.stage_width); local.canvas.setAttribute("height", global.stage_height); global.stage.appendChild(local.canvas); local.ctx = local.canvas.getContext("2d");' + script + '}catch(e){alert(e);}})()';
+	}
+	
 	function runScript(script){
 		console.log('run script &lt;script>%s&lt;/script>', script);
         if (scriptRun){
@@ -57,7 +61,7 @@
             location.reload();
 	}else{
             scriptRun = true;
-            eval(script);
+            eval(wrap(script));
         }
     }
 	
