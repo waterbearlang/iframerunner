@@ -16,13 +16,6 @@
     <div class="stage">
     </div>
     <script>
-    var scriptRun = false;
-    if (localStorage.savedScript){
-        var script = localStorage.savedScript;
-        delete localStorage.savedScript;
-        scriptRun = true;
-        wrap(script)();
-    }
     window.addEventListener('message', receiveMessage, false);
 
     function receiveMessage(evt){
@@ -33,7 +26,6 @@
 			return;
 		}
 		switch(message.command){
-			case 'runscript': return runScript(message.script);
 			case 'reset': return reset();
 			case 'loadlibrary': return loadLibrary(message.library, message.script);
 			default: return console.log('unknown command: %o', message);
@@ -41,21 +33,8 @@
 	}
 
 	function reset(){
-		delete localStorage.savedScript;
 		location.reload();
 	}
-
-
-	function runScript(script){
-		console.log('run script %s', wrap(script));
-        if (scriptRun){
-            localStorage.savedScript = script;
-            location.reload();
-	}else{
-            scriptRun = true;
-            wrap(script)();
-        }
-    }
 
     function wrap(script){
         return new Function(script);
