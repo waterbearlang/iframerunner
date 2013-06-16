@@ -21,7 +21,7 @@
         var script = localStorage.savedScript;
         delete localStorage.savedScript;
         scriptRun = true;
-        eval(wrap(script));
+        wrap(script)();
     }
     window.addEventListener('message', receiveMessage, false);
 
@@ -53,14 +53,18 @@
             location.reload();
 	}else{
             scriptRun = true;
-            eval(wrap(script));
+            wrap(script)();
         }
+    }
+
+    function wrap(script){
+        return new Function(script);
     }
 
 	function loadLibrary(library, script){
         yepnope({
             load : library,
-            complete : script
+            complete : wrap(script)()
         });
 
 	}
