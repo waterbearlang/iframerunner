@@ -37,13 +37,14 @@
 	}
 
     function wrap(script){
-        return new Function(script);
+        return new Function('console.log("loading script");' + script);
     }
 
 	function loadLibrary(library, script){
+        console.log('loading library %s', library);
         yepnope({
             load : library,
-            complete : wrap(script)()
+            complete : wrap(script)
         });
 
 	}
