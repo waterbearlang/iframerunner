@@ -46,8 +46,8 @@
 
     function loadLibrary(library, script){
         if (scriptRun){
-            localStorage.savedScript = script;
-            localStorage.savedLibrary = library;
+            sessionStorage.savedScript = script;
+            sessionStorage.savedLibrary = library;
             location.reload();
     }else{
             scriptRun = true;
