@@ -22,7 +22,10 @@
         var script = sessionStorage.savedScript;
         delete sessionStorage.savedScript;
         scriptRun = true;
-        wrap(script)();
+        yepnope({
+            load : library,
+            complete : wrap(script)
+        });
     }
 
     window.addEventListener('message', receiveMessage, false);
@@ -44,6 +47,7 @@
     function loadLibrary(library, script){
         if (scriptRun){
             localStorage.savedScript = script;
+            localStorage.savedLibrary = library;
             location.reload();
     }else{
             scriptRun = true;
