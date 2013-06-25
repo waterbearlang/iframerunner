@@ -16,6 +16,15 @@
     <div class="stage">
     </div>
     <script>
+
+    var scriptRun = false;
+    if (sessionStorage.savedScript){
+        var script = sessionStorage.savedScript;
+        delete sessionStorage.savedScript;
+        scriptRun = true;
+        wrap(script)();
+    }
+
     window.addEventListener('message', receiveMessage, false);
 
     function receiveMessage(evt){
@@ -32,7 +41,22 @@
 		}
 	}
 
+    function loadLibrary(library, script){
+        if (scriptRun){
+            localStorage.savedScript = script;
+            location.reload();
+    }else{
+            scriptRun = true;
+            yepnope({
+                load : library,
+                complete : wrap(script)
+            });
+        }
+    }
+
+
 	function reset(){
+        delete sessionStorage.savedScript;
 		location.reload();
 	}
 
@@ -40,14 +64,6 @@
         return new Function('console.log("loading script");' + script);
     }
 
-	function loadLibrary(library, script){
-        console.log('loading library %s', library);
-        yepnope({
-            load : library,
-            complete : wrap(script)
-        });
-
-	}
     </script>
 </body>
 </html>
