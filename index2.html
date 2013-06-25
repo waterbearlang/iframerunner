@@ -20,6 +20,8 @@
     var scriptRun = false;
     if (sessionStorage.savedScript){
         var script = sessionStorage.savedScript;
+        var library = sessionStorage.savedLibrary;
+        delete sessionStorage.savedLibrary;
         delete sessionStorage.savedScript;
         scriptRun = true;
         yepnope({
@@ -45,12 +47,15 @@
 	}
 
     function loadLibrary(library, script){
+        console.log('loading library: %s', library);
         if (scriptRun){
+            console.log('need to reload');
             sessionStorage.savedScript = script;
             sessionStorage.savedLibrary = library;
             location.reload();
     }else{
             scriptRun = true;
+            console.log('actually running the script');
             yepnope({
                 load : library,
                 complete : wrap(script)
