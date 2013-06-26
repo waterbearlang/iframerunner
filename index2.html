@@ -66,10 +66,12 @@
 
 	function reset(){
         delete sessionStorage.savedScript;
+        delete sessionStorage.savedLibrary;
 		location.reload();
 	}
 
     function wrap(script){
+        console.log('wrapping script: %s', script);
         return new Function('console.log("loading script");' + script);
     }
 
