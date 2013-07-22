@@ -55,7 +55,7 @@
             location.reload();
     }else{
             scriptRun = true;
-            console.log('actually running the script');
+            console.log('actually running the script, after loading %s', library);
             yepnope({
                 load : library,
                 complete : wrap(script)
