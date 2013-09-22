@@ -72,7 +72,7 @@
 
     function wrap(script){
         // console.log('wrapping script: %s', script);
-        return new Function('/*console.log("loading script");*/document.querySelector("canvas").focus();' + script);
+        return new Function(script);
     }
 
     </script>
