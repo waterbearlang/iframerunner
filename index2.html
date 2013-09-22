@@ -49,13 +49,13 @@
     function loadLibrary(library, script){
         console.log('loading library: %s', library);
         if (scriptRun){
-            console.log('need to reload');
+            // console.log('need to reload');
             sessionStorage.savedScript = script;
             sessionStorage.savedLibrary = library;
             location.reload();
     }else{
             scriptRun = true;
-            console.log('actually running the script, after loading %s', library);
+            // console.log('actually running the script, after loading %s', library);
             yepnope({
                 load : library,
                 complete : wrap(script)
@@ -71,8 +71,8 @@
 	}
 
     function wrap(script){
-        console.log('wrapping script: %s', script);
-        return new Function('console.log("loading script");' + script);
+        // console.log('wrapping script: %s', script);
+        return new Function('/*console.log("loading script");*/document.querySelector("canvas").focus();' + script);
     }
 
     </script>
